@@ -1,0 +1,67 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+local_backend: true
+
+site_url: "/"
+logo_url: "/logo-placeholder.png"
+
+collections:
+  - name: "articles"
+    label: "Articles"
+    folder: "content/articles"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Title" }
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "excerpt", label: "Excerpt", widget: "text" }
+      - { name: "cover", label: "Cover Image", widget: "image", required: false }
+      - { name: "draft", label: "Draft", widget: "boolean", default: false }
+      - { name: "body", label: "Body", widget: "markdown" }
+
+  - name: "services"
+    label: "Services"
+    folder: "content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Service Title" }
+      - { name: "icon", label: "Icon (emoji or text)", required: false }
+      - { name: "summary", label: "Summary", widget: "text" }
+      - { name: "body", label: "Details", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "About"
+        name: "about"
+        file: "content/pages/about.md"
+        fields:
+          - { name: "title", label: "Title", default: "About Us" }
+          - { name: "body", label: "Body", widget: "markdown" }
+
+      - label: "Contact"
+        name: "contact"
+        file: "content/pages/contact.md"
+        fields:
+          - { name: "title", label: "Title", default: "Contact Us" }
+          - { name: "email", label: "Email", default: "info@malpaniassociate.com" }
+          - { name: "phone", label: "Phone", default: "+91-XXXXXXXXXX" }
+          - { name: "address", label: "Address", widget: "text", default: "Delhi 74, India" }
+          - { name: "body", label: "Body", widget: "markdown", required: false }
+
+  - name: "settings"
+    label: "Settings"
+    files:
+      - label: "Site Settings"
+        name: "site"
+        file: "content/settings/site.json"
+        fields:
+          - { name: "firmName", label: "Firm Name", default: "Malpani & Dass Associates" }
+          - { name: "tagline", label: "Tagline", default: "Trusted Chartered Accountants" }
+          - { name: "logo", label: "Logo", widget: "image", required: false }

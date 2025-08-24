@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Basic prose styling for markdown */
+.prose :where(a):not(:where([class~="not-prose"] *)) {
+  @apply text-brand underline;
+}
